@@ -1,0 +1,43 @@
+MariaDB [UOV]> create table PHYSICIAN001(physician_id VARCHAR(20),Name VARCHAR(20),position VARCHAR(30));
+Query OK, 0 rows affected (0.286 sec)
+
+
+MariaDB [UOV]> DESC  PHYSICIAN001;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| physician_id | varchar(20) | YES  |     | NULL    |       |
+| Name         | varchar(20) | YES  |     | NULL    |       |
+| position     | varchar(30) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.005 sec)
+
+MariaDB [UOV]>
+
+MariaDB [UOV]>  INSERT INTO  PHYSICIAN001 VALUES('1','John Dorian ','staff Internist');
+Query OK, 1 row affected (0.130 sec)
+
+MariaDB [UOV]> INSERT INTO  PHYSICIAN001 VALUES('2','Elliot Reid','Attending Physician '),('3','Christopher Turk','Surgical Attending Physicin'),('4','Percival Cox','Senior attending Physician');
+Query OK, 3 rows affected (0.104 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+
+MariaDB [UOV]> INSERT INTO  PHYSICIAN001 VALUES('5','Keith Dudemeister ','MID Resident '),('6','Molly Clock ','attending
+ Phyciatrist');
+Query OK, 2 rows affected (0.110 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [UOV]> select * from PHYSICIAN001;
++--------------+--------------------+-----------------------------+
+| physician_id | Name               | position                    |
++--------------+--------------------+-----------------------------+
+| 1            | John Dorian        | staff Internist             |
+| 2            | Elliot Reid        | Attending Physician         |
+| 3            | Christopher Turk   | Surgical Attending Physicin |
+| 4            | Percival Cox       | Senior attending Physician  |
+| 5            | Keith Dudemeister  | MID Resident                |
+| 6            | Molly Clock        | attending Phyciatrist       |
++--------------+--------------------+-----------------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [UOV]>

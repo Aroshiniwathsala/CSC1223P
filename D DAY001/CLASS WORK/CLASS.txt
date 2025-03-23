@@ -1,0 +1,151 @@
+vv
+HP@DESKTOP-Q8CQRU4 c:\xampp
+# mysql -u root-p
+ERROR 1045 (28000): Access denied for user 'root-p'@'localhost' (using password: NO)
+
+HP@DESKTOP-Q8CQRU4 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]>
+
+
+
+
+
+
+
+
+MariaDB [(none)]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+5 rows in set (0.200 sec)
+
+MariaDB [(none)]>
+
+
+
+
+
+MariaDB [(none)]> create database UOV;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| uov                |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [(none)]>
+
+
+
+
+
+MariaDB [(none)]> use  UOV;
+Database changed
+MariaDB [UOV]> create table students(std_id VARCHAR(15), name VARCHAR(30),course VARCHAR(30),DOB DATE,city VARCHAR(20));
+Query OK, 0 rows affected (0.341 sec)
+
+MariaDB [UOV]> DESC students;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| std_id | varchar(15) | YES  |     | NULL    |       |
+| name   | varchar(30) | YES  |     | NULL    |       |
+| course | varchar(30) | YES  |     | NULL    |       |
+| DOB    | date        | YES  |     | NULL    |       |
+| city   | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.124 sec)
+
+MariaDB [UOV]>
+
+
+MariaDB [UOV]> INSERT INTO students  VALUES ('2022/asp/01','Nima','AMC','2002.04.02','Vavuniya');
+Query OK, 1 row affected (0.094 sec)
+
+MariaDB [UOV]>  select * from students;
++-------------+------+--------+------------+----------+
+| std_id      | name | course | DOB        | city     |
++-------------+------+--------+------------+----------+
+| 2022/asp/01 | Nima | AMC    | 2002-04-02 | Vavuniya |
++-------------+------+--------+------------+----------+
+1 row in set (0.040 sec)
+
+MariaDB [UOV]>
+
+MariaDB [UOV]> INSERT INTO students  VALUES ('2022/asp/02','Nila','AMC','2003.04.02','POLONNARU'),('2022/asp/03','Nima','AMC','2002.05.02','HINGURAK
+GODA');
+Query OK, 2 rows affected (0.145 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [UOV]>  select * from students;
++-------------+------+--------+------------+--------------+
+| std_id      | name | course | DOB        | city         |
++-------------+------+--------+------------+--------------+
+| 2022/asp/01 | Nima | AMC    | 2002-04-02 | Vavuniya     |
+| 2022/asp/02 | Nila | AMC    | 2003-04-02 | POLONNARU    |
+| 2022/asp/03 | Nima | AMC    | 2002-05-02 | HINGURAKGODA |
++-------------+------+--------+------------+--------------+
+3 rows in set (0.001 sec)
+
+MariaDB [UOV]>
+
+
+
+MariaDB [UOV]> INSERT INTO students  VALUES ('2022/asp/02','Nila','AMC','2003.04.02','POLONNARU'),('2022/asp/03','Nima','AMC','2002.05.02','HINGURAK
+
+    '> ^Z^Z^Z^Z^Z');
+Query OK, 2 rows affected (0.057 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [UOV]> INSERT INTO students  VALUES ('2022/asp/04','MALA','AMC','2005.04.02','GAMPAHA'),('2022/asp/05','MADARA','AMC','2005.06.02','KANDY');
+
+Query OK, 2 rows affected (0.061 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [UOV]> INSERT INTO students  VALUES ('2022/asp/04','MALA','AMC','2005.06.30','GAMPAHA'),('2022/asp/05','MADARA','AMC','2005.06.02','KANDY');
+
+Query OK, 2 rows affected (0.136 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [UOV]>  select * from students;
++-------------+--------+--------+------------+----------------+
+| std_id      | name   | course | DOB        | city           |
++-------------+--------+--------+------------+----------------+
+| 2022/asp/01 | Nima   | AMC    | 2002-04-02 | Vavuniya       |
+| 2022/asp/02 | Nila   | AMC    | 2003-04-02 | POLONNARU      |
+| 2022/asp/03 | Nima   | AMC    | 2002-05-02 | HINGURAKGODA   |
+| 2022/asp/02 | Nila   | AMC    | 2003-04-02 | POLONNARU      |
+| 2022/asp/03 | Nima   | AMC    | 2002-05-02 | HINGURAK
+␦␦␦␦␦ |
+| 2022/asp/04 | MALA   | AMC    | 2005-04-02 | GAMPAHA        |
+| 2022/asp/05 | MADARA | AMC    | 2005-06-02 | KANDY          |
+| 2022/asp/04 | MALA   | AMC    | 2005-06-30 | GAMPAHA        |
+| 2022/asp/05 | MADARA | AMC    | 2005-06-02 | KANDY          |
++-------------+--------+--------+------------+----------------+
+9 rows in set (0.001 sec)
+
+MariaDB [UOV
