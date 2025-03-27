@@ -1,0 +1,176 @@
+START......
+
+
+Setting environment for using XAMPP for Windows.
+HP@DESKTOP-Q8CQRU4 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+
+
+DATA BASE SHOWING.....
+
+
+MariaDB [(none)]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| physician          |
+| test               |
+| uov                |
++--------------------+
+7 rows in set (0.108 sec)
+
+
+SELECTING A DATABASE......
+
+
+MariaDB [(none)]> use UOV;
+Database changed
+MariaDB [UOV]>
+
+
+CREATING A DATABASE AND SEE FEILD....*****PRYMARY KEY****
+
+MariaDB [UOV]> create table patient(Patientid INT Primary key, NAME VARCHAR(20),Address VARCHAR(20),PHONE INT(5));
+Query OK, 0 rows affected (0.287 sec)
+
+MariaDB [UOV]> DESC Pstient;
+ERROR 1146 (42S02): Table 'uov.pstient' doesn't exist
+MariaDB [UOV]> DESC Patient;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Patientid | int(11)     | NO   | PRI | NULL    |       |
+| NAME      | varchar(20) | YES  |     | NULL    |       |
+| Address   | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | int(5)      | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.144 sec)
+
+MariaDB [UOV]>
+
+
+
+ENTERING DATA TO THE TABLE........
+
+
+MariaDB [UOV]> INSERT INTO patient VALUES(10000001,'John Smith','42 Floobar  Lane ',5550256);
+Query OK, 1 row affected (0.094 sec)
+
+MariaDB [UOV]>  INSERT INTO patient VALUES(10000002,'Grace Richie','37 Snafu Drive ',5550512);
+Query OK, 1 row affected (0.092 sec)
+
+MariaDB [UOV]> INSERT INTO patient VALUES(10000003,'TOdd Quinian','101 Omgbbq Street',5551204),(10000004,'Denis Doe','1100 Foobaz Avanue',5552048);
+Query OK, 2 rows affected (0.136 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [UOV]> select *from PAtient;
++-----------+--------------+--------------------+---------+
+| Patientid | NAME         | Address            | PHONE   |
++-----------+--------------+--------------------+---------+
+|  10000001 | John Smith   | 42 Floobar  Lane   | 5550256 |
+|  10000002 | Grace Richie | 37 Snafu Drive     | 5550512 |
+|  10000003 | TOdd Quinian | 101 Omgbbq Street  | 5551204 |
+|  10000004 | Denis Doe    | 1100 Foobaz Avanue | 5552048 |
++-----------+--------------+--------------------+---------+
+4 rows in set (0.000 sec)
+
+MariaDB [UOV]>
+
+
+DELETE DATA ............
+
+
+MariaDB [UOV]> DELETE from Patient;
+Query OK, 4 rows affected (0.095 sec)
+
+MariaDB [UOV]> select *from PAtient;
+Empty set (0.000 sec)
+
+MariaDB [UOV]>
+
+
+
+DELETE FEIELD,......
+
+
+MariaDB [UOV]> TRUNCATE table patient;
+Query OK, 0 rows affected (0.835 sec)
+
+MariaDB [UOV]> SHOW tables;
++---------------+
+| Tables_in_uov |
++---------------+
+| patient       |
+| physician001  |
+| students      |
++---------------+
+3 rows in set (0.001 sec)
+
+MariaDB [UOV]> DESC patient;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Patientid | int(11)     | NO   | PRI | NULL    |       |
+| NAME      | varchar(20) | YES  |     | NULL    |       |
+| Address   | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | int(5)      | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.117 sec)
+
+MariaDB [UOV]> DROP table patient;
+Query OK, 0 rows affected (0.296 sec)
+
+MariaDB [UOV]> SHOW tables;
++---------------+
+| Tables_in_uov |
++---------------+
+| physician001  |
+| students      |
++---------------+
+2 rows in set (0.001 sec)
+
+MariaDB [UOV]>
+
+NEW DATA ENTRY******* NOTEPAD++
+
+
+MariaDB [UOV]> create table OFF(studentid INT(5),NAME VARCHAR(20),AGE INT(2),GRADE VARCHAR(1),CITY VARCHAR(20));
+Query OK, 0 rows affected (0.240 sec)
+
+ERROR 1054 (42S22): Unknown column 'ID' in 'field list'
+MariaDB [UOV]> LOAD DATA LOCAL INFILE'C:/Users/HP/Desktop/DAY 002 3.27/CLASS WORK/DATA.csv'
+    -> INTO TABLE OFF
+    -> FIELDS TERMINATED By ','
+    -> LINES TERMINATED By '\n'
+    -> (studentid,NAME,AGE ,GRADE,CITY);
+Query OK, 7 rows affected, 5 warnings (0.132 sec)
+Records: 7  Deleted: 0  Skipped: 0  Warnings: 5
+
+MariaDB [UOV]> SELECT *FROM OFF;
++-----------+---------+------+-------+--------------+
+| studentid | NAME    | AGE  | GRADE | CITY         |
++-----------+---------+------+-------+--------------+
+   |      1 | Alice   |   20 | A     | NEW YORK
+    |     2 | Bob     |   22 | B     | Chicago
+    |     3 | Charlie |   21 | A     | NEW YORK
+      |   4 | David   |   23 | C     | Bosten
+     |    5 | Emma    |   22 | B     | Chicago
+ |        6 | Frank   |   20 | A     | Los Angeles
+|         0 | NULL    | NULL | NULL  | NULL         |
++-----------+---------+------+-------+--------------+
+7 rows in set (0.000 sec)
+
+MariaDB [UOV]>
